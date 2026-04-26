@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feet to Inches Converter – Fast Jobsite & Construction Tool</title>
+  <meta name="description" content="Convert feet to inches instantly for construction, framing, and material measurements. Mobile-friendly and accurate for jobsite use." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many inches are in a foot?", "acceptedAnswer": {"@type": "Answer", "text": "There are 12 inches in one foot."}}, {"@type": "Question", "name": "Is this feet to inches converter accurate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. This tool uses standard U.S. measurement conversions used in construction and jobsite work."}}, {"@type": "Question", "name": "Can I use this converter on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. This converter is mobile-friendly and designed for quick jobsite use."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Feet to Inches Converter</h1>
+      <p>Enter feet or inches and get an instant conversion. Built for fast jobsite measurements.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="feet">Feet</label>
+          <input id="feet" inputmode="decimal" placeholder="e.g., 6.5" />
+        </div>
+        <div>
+          <label for="inches">Inches</label>
+          <input id="inches" inputmode="decimal" placeholder="e.g., 78" />
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Result:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Common Conversions</h3>
+        <table class="table">
+          <thead><tr><th>Feet</th><th>Inches</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>12</td></tr>
+            <tr><td>5</td><td>60</td></tr>
+            <tr><td>8</td><td>96</td></tr>
+            <tr><td>10</td><td>120</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
+<li><a href="/cubic-yards-to-cubic-feet-converter">Cubic Yards to Cubic Feet Converter</a></li>
+<li><a href="/pounds-to-kilograms-converter">Pounds to Kilograms Converter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const feetEl = document.getElementById('feet');
+const inchesEl = document.getElementById('inches');
+const resultEl = document.getElementById('result');
+let lock = false;
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*10000)/10000).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function setResult(ft, inch){
+  if(ft === null && inch === null){ resultEl.innerHTML = "<strong>Result:</strong> —"; return; }
+  if(ft !== null){ resultEl.innerHTML = `<strong>Result:</strong> ${fmt(ft)} ft = ${fmt(ft*12)} in`; }
+  else { resultEl.innerHTML = `<strong>Result:</strong> ${fmt(inch)} in = ${fmt(inch/12)} ft`; }
+}
+
+feetEl.addEventListener('input', () => {
+  if(lock) return;
+  const ft = toNum(feetEl.value);
+  lock = true;
+  inchesEl.value = ft === null ? "" : fmt(ft*12);
+  lock = false;
+  setResult(ft, null);
+});
+
+inchesEl.addEventListener('input', () => {
+  if(lock) return;
+  const inch = toNum(inchesEl.value);
+  lock = true;
+  feetEl.value = inch === null ? "" : fmt(inch/12);
+  lock = false;
+  setResult(null, inch);
+});
+  </script>
+</body>
+</html>

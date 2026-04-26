@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Square Footage Calculator – Rooms, Slabs & Jobsite Areas</title>
+  <meta name="description" content="Calculate square footage for rooms, slabs, floors, and yards. Simple tool for construction, remodeling, and estimating materials." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate square footage?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply length (feet) by width (feet) to get square feet."}}, {"@type": "Question", "name": "Can I use this for rooms and slabs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. This calculator works for rooms, slabs, floors, and most rectangular areas."}}, {"@type": "Question", "name": "Is this calculator mobile-friendly?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It’s designed for quick jobsite use on phones."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Square Footage Calculator</h1>
+      <p>Calculate square footage for rooms, slabs, floors, and jobsite areas. Enter length and width in feet.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="length">Length (feet)</label>
+          <input id="length" inputmode="decimal" placeholder="e.g., 12" />
+        </div>
+        <div>
+          <label for="width">Width (feet)</label>
+          <input id="width" inputmode="decimal" placeholder="e.g., 10" />
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Square Footage:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Example</h3>
+        <p>12 ft × 10 ft = <strong>120 sq ft</strong>.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/concrete-bag-calculator">Concrete Bag Calculator</a></li>
+<li><a href="/paint-coverage-calculator">Paint Coverage Calculator</a></li>
+<li><a href="/mulch-volume-calculator">Mulch Volume Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const lengthEl = document.getElementById('length');
+const widthEl = document.getElementById('width');
+const resultEl = document.getElementById('result');
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*100)/100).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function calc(){
+  const L = toNum(lengthEl.value);
+  const W = toNum(widthEl.value);
+  if(L === null || W === null){ resultEl.innerHTML = "<strong>Square Footage:</strong> —"; return; }
+  const sqft = L * W;
+  resultEl.innerHTML = `<strong>Square Footage:</strong> ${fmt(sqft)} sq ft`;
+}
+lengthEl.addEventListener('input', calc);
+widthEl.addEventListener('input', calc);
+  </script>
+</body>
+</html>

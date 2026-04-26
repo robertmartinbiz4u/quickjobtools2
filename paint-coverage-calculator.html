@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paint Coverage Calculator – How Much Paint Do I Need?</title>
+  <meta name="description" content="Estimate paint coverage for walls, rooms, and surfaces. Avoid overbuying or running short on the job." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How accurate is this paint calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It provides an estimate using standard paint coverage assumptions. Actual coverage can vary."}}, {"@type": "Question", "name": "Should I add extra paint?", "acceptedAnswer": {"@type": "Answer", "text": "It’s often smart to add 5–10% extra for touch-ups and waste."}}, {"@type": "Question", "name": "Does this account for doors and windows?", "acceptedAnswer": {"@type": "Answer", "text": "No. Subtract non-painted areas from total square footage for best results."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Paint Coverage Calculator</h1>
+      <p>Estimate how much paint you need based on area, coats, and coverage per gallon.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="area">Paint area (sq ft)</label>
+          <input id="area" inputmode="decimal" placeholder="e.g., 500" />
+        </div>
+        <div>
+          <label for="coats">Number of coats</label>
+          <input id="coats" inputmode="decimal" placeholder="e.g., 2" value="1" />
+        </div>
+        <div>
+          <label for="coverage">Coverage per gallon (sq ft)</label>
+          <input id="coverage" inputmode="decimal" placeholder="e.g., 350" value="350" />
+        </div>
+        <div>
+          <label for="waste">Extra for waste</label>
+          <select id="waste">
+            <option value="0">0%</option>
+            <option value="0.05">5%</option>
+            <option value="0.10">10%</option>
+          </select>
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Paint needed:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Tip</h3>
+        <p>Most paints cover around 300–400 sq ft per gallon per coat. Rough surfaces may need more.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
+<li><a href="/feet-to-inches-converter">Feet to Inches Converter</a></li>
+<li><a href="/mulch-volume-calculator">Mulch Volume Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const areaEl = document.getElementById('area');
+const coatsEl = document.getElementById('coats');
+const coverageEl = document.getElementById('coverage');
+const wasteEl = document.getElementById('waste');
+const resultEl = document.getElementById('result');
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*100)/100).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function calc(){
+  const area = toNum(areaEl.value);
+  const coats = toNum(coatsEl.value) ?? 1;
+  const cov = toNum(coverageEl.value) ?? 350;
+  const waste = parseFloat(wasteEl.value);
+  if(area === null || coats <= 0 || cov <= 0){ resultEl.innerHTML = "<strong>Paint needed:</strong> —"; return; }
+  const totalArea = area * coats * (1 + waste);
+  const gallons = totalArea / cov;
+  resultEl.innerHTML = `<strong>Paint needed:</strong> ${fmt(gallons)} gallons (round up for purchase)`;
+}
+[areaEl,coatsEl,coverageEl,wasteEl].forEach(el => el.addEventListener('input', calc));
+wasteEl.addEventListener('change', calc);
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Concrete Bag Calculator – How Many Bags Do I Need?</title>
+  <meta name="description" content="Estimate how many concrete bags you need for slabs, posts, and footings. Accurate, fast, and built for jobsite planning." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How accurate is this concrete bag calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It provides an estimate using standard bag yields. Actual results may vary by mix and conditions."}}, {"@type": "Question", "name": "Should I buy extra concrete bags?", "acceptedAnswer": {"@type": "Answer", "text": "It’s recommended to add 5–10% extra for waste or uneven forms."}}, {"@type": "Question", "name": "What thickness should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Use the planned slab thickness in inches (common slabs are 4 inches)."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Concrete Bag Calculator</h1>
+      <p>Estimate concrete bags needed for a slab or pad. Enter length, width, and thickness. Choose your bag size.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="length">Length (feet)</label>
+          <input id="length" inputmode="decimal" placeholder="e.g., 10" />
+        </div>
+        <div>
+          <label for="width">Width (feet)</label>
+          <input id="width" inputmode="decimal" placeholder="e.g., 10" />
+        </div>
+        <div>
+          <label for="thickness">Thickness (inches)</label>
+          <input id="thickness" inputmode="decimal" placeholder="e.g., 4" />
+        </div>
+        <div>
+          <label for="bag">Bag size</label>
+          <select id="bag">
+            <option value="0.60">80 lb (≈0.60 cu ft)</option>
+            <option value="0.45">60 lb (≈0.45 cu ft)</option>
+            <option value="0.375">50 lb (≈0.375 cu ft)</option>
+          </select>
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Bags needed:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Tip</h3>
+        <p>Consider adding 5–10% extra for waste, uneven forms, or spillage.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
+<li><a href="/cubic-yards-to-cubic-feet-converter">Cubic Yards to Cubic Feet Converter</a></li>
+<li><a href="/feet-to-inches-converter">Feet to Inches Converter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const lengthEl = document.getElementById('length');
+const widthEl = document.getElementById('width');
+const thicknessEl = document.getElementById('thickness');
+const bagEl = document.getElementById('bag');
+const resultEl = document.getElementById('result');
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*100)/100).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function calc(){
+  const L = toNum(lengthEl.value);
+  const W = toNum(widthEl.value);
+  const T = toNum(thicknessEl.value);
+  const yieldPerBag = parseFloat(bagEl.value);
+  if(L === null || W === null || T === null){ resultEl.innerHTML = "<strong>Bags needed:</strong> —"; return; }
+  const volumeCuFt = L * W * (T/12);
+  const bags = Math.ceil(volumeCuFt / yieldPerBag);
+  resultEl.innerHTML = `<strong>Bags needed:</strong> ${bags} (volume ≈ ${fmt(volumeCuFt)} cu ft)`;
+}
+
+[lengthEl,widthEl,thicknessEl,bagEl].forEach(el => el.addEventListener('input', calc));
+bagEl.addEventListener('change', calc);
+  </script>
+</body>
+</html>

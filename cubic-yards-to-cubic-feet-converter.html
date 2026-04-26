@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cubic Yards to Cubic Feet Converter – Material Volume Tool</title>
+  <meta name="description" content="Convert cubic yards to cubic feet for concrete, gravel, soil, and mulch. Simple volume conversion for jobsite estimates." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many cubic feet are in a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 27 cubic feet in one cubic yard."}}, {"@type": "Question", "name": "Is this converter accurate for job estimates?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It uses standard volume conversion formulas."}}, {"@type": "Question", "name": "Can I use this for concrete and mulch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It’s commonly used for concrete, soil, gravel, and mulch estimates."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Cubic Yards to Cubic Feet Converter</h1>
+      <p>Convert cubic yards and cubic feet instantly for material volume planning.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="yards">Cubic yards</label>
+          <input id="yards" inputmode="decimal" placeholder="e.g., 2" />
+        </div>
+        <div>
+          <label for="feet">Cubic feet</label>
+          <input id="feet" inputmode="decimal" placeholder="e.g., 54" />
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Result:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Common Reference</h3>
+        <p>1 cubic yard = <strong>27 cubic feet</strong>.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/mulch-volume-calculator">Mulch Volume Calculator</a></li>
+<li><a href="/concrete-bag-calculator">Concrete Bag Calculator</a></li>
+<li><a href="/gallons-to-liters-converter">Gallons to Liters Converter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const yardsEl = document.getElementById('yards');
+const feetEl = document.getElementById('feet');
+const resultEl = document.getElementById('result');
+let lock = false;
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*10000)/10000).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function setResult(yd, cf){
+  if(yd === null && cf === null){ resultEl.innerHTML = "<strong>Result:</strong> —"; return; }
+  if(yd !== null){ resultEl.innerHTML = `<strong>Result:</strong> ${fmt(yd)} yd³ = ${fmt(yd*27)} ft³`; }
+  else { resultEl.innerHTML = `<strong>Result:</strong> ${fmt(cf)} ft³ = ${fmt(cf/27)} yd³`; }
+}
+
+yardsEl.addEventListener('input', () => {
+  if(lock) return;
+  const yd = toNum(yardsEl.value);
+  lock = true;
+  feetEl.value = yd === null ? "" : fmt(yd*27);
+  lock = false;
+  setResult(yd, null);
+});
+
+feetEl.addEventListener('input', () => {
+  if(lock) return;
+  const cf = toNum(feetEl.value);
+  lock = true;
+  yardsEl.value = cf === null ? "" : fmt(cf/27);
+  lock = false;
+  setResult(null, cf);
+});
+  </script>
+</body>
+</html>

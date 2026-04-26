@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fence Length Calculator – Posts, Panels & Total Length</title>
+  <meta name="description" content="Estimate total fence length and spacing for posts and panels. Useful for fencing, landscaping, and property projects." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I estimate fence posts?", "acceptedAnswer": {"@type": "Answer", "text": "Divide total length by post spacing to estimate segments, then add one post."}}, {"@type": "Question", "name": "Does this include corners and gates?", "acceptedAnswer": {"@type": "Answer", "text": "No. Add extra posts for corners, gates, and end posts."}}, {"@type": "Question", "name": "What is common post spacing?", "acceptedAnswer": {"@type": "Answer", "text": "Common spacing is 6–8 feet depending on fence type."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Fence Length Calculator</h1>
+      <p>Estimate how many fence posts you need based on total length and post spacing.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="length">Total fence length (feet)</label>
+          <input id="length" inputmode="decimal" placeholder="e.g., 120" />
+        </div>
+        <div>
+          <label for="spacing">Post spacing (feet)</label>
+          <input id="spacing" inputmode="decimal" placeholder="e.g., 8" value="8" />
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Estimated posts:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Note</h3>
+        <p>This is a simple estimate for straight runs. Gates, corners, and end posts may require additional posts.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
+<li><a href="/mulch-volume-calculator">Mulch Volume Calculator</a></li>
+<li><a href="/feet-to-inches-converter">Feet to Inches Converter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const lengthEl = document.getElementById('length');
+const spacingEl = document.getElementById('spacing');
+const resultEl = document.getElementById('result');
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+
+function calc(){
+  const L = toNum(lengthEl.value);
+  const S = toNum(spacingEl.value);
+  if(L === null || S === null || S <= 0){ resultEl.innerHTML = "<strong>Estimated posts:</strong> —"; return; }
+  const segments = Math.ceil(L / S);
+  const posts = segments + 1;
+  resultEl.innerHTML = `<strong>Estimated posts:</strong> ${posts} (segments: ${segments})`;
+}
+[lengthEl,spacingEl].forEach(el => el.addEventListener('input', calc));
+  </script>
+</body>
+</html>

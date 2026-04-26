@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallons to Liters Converter – Quick Volume Conversion</title>
+  <meta name="description" content="Convert gallons to liters for fuel, liquids, and materials. Simple and mobile-friendly for field use." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many liters are in a U.S. gallon?", "acceptedAnswer": {"@type": "Answer", "text": "One U.S. gallon equals 3.785411784 liters."}}, {"@type": "Question", "name": "Is this converter accurate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It uses the standard U.S. gallon to liter conversion factor."}}, {"@type": "Question", "name": "Can I convert liters back to gallons?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Enter liters to convert back to gallons instantly."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Gallons to Liters Converter</h1>
+      <p>Convert U.S. gallons and liters instantly for fuel, liquids, and materials.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="gal">U.S. gallons (gal)</label>
+          <input id="gal" inputmode="decimal" placeholder="e.g., 5" />
+        </div>
+        <div>
+          <label for="liters">Liters (L)</label>
+          <input id="liters" inputmode="decimal" placeholder="e.g., 18.9" />
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Result:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Note</h3>
+        <p>This tool uses <strong>U.S. gallons</strong> (1 gal = 3.785411784 L).</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/cubic-yards-to-cubic-feet-converter">Cubic Yards to Cubic Feet Converter</a></li>
+<li><a href="/pounds-to-kilograms-converter">Pounds to Kilograms Converter</a></li>
+<li><a href="/paint-coverage-calculator">Paint Coverage Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const galEl = document.getElementById('gal');
+const litersEl = document.getElementById('liters');
+const resultEl = document.getElementById('result');
+let lock = false;
+
+const GAL_TO_L = 3.785411784;
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*10000)/10000).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function setResult(g, l){
+  if(g === null && l === null){ resultEl.innerHTML = "<strong>Result:</strong> —"; return; }
+  if(g !== null){ resultEl.innerHTML = `<strong>Result:</strong> ${fmt(g)} gal = ${fmt(g*GAL_TO_L)} L`; }
+  else { resultEl.innerHTML = `<strong>Result:</strong> ${fmt(l)} L = ${fmt(l/GAL_TO_L)} gal`; }
+}
+
+galEl.addEventListener('input', () => {
+  if(lock) return;
+  const g = toNum(galEl.value);
+  lock = true;
+  litersEl.value = g === null ? "" : fmt(g*GAL_TO_L);
+  lock = false;
+  setResult(g, null);
+});
+
+litersEl.addEventListener('input', () => {
+  if(lock) return;
+  const l = toNum(litersEl.value);
+  lock = true;
+  galEl.value = l === null ? "" : fmt(l/GAL_TO_L);
+  lock = false;
+  setResult(null, l);
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hourly to Weekly Pay Calculator – Including Overtime</title>
+  <meta name="description" content="Convert hourly pay to weekly earnings and overtime. Useful for laborers, contractors, and shift workers." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this calculator include overtime?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Add overtime hours and select an overtime multiplier."}}, {"@type": "Question", "name": "Does this include taxes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Results show gross pay before taxes or deductions."}}, {"@type": "Question", "name": "Can contractors use this?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It’s useful for both hourly employees and contractors."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Hourly to Weekly Pay Calculator</h1>
+      <p>Estimate weekly gross pay from hourly rate, regular hours, and overtime hours.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="rate">Hourly rate ($)</label>
+          <input id="rate" inputmode="decimal" placeholder="e.g., 22.50" />
+        </div>
+        <div>
+          <label for="regular">Regular hours</label>
+          <input id="regular" inputmode="decimal" placeholder="e.g., 40" />
+        </div>
+        <div>
+          <label for="overtime">Overtime hours</label>
+          <input id="overtime" inputmode="decimal" placeholder="e.g., 6" />
+        </div>
+        <div>
+          <label for="mult">Overtime multiplier</label>
+          <select id="mult">
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+            <option value="1">No overtime</option>
+          </select>
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Weekly gross pay:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Note</h3>
+        <p>This shows gross pay before taxes or deductions. Overtime rules vary by employer and location.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/feet-to-inches-converter">Feet to Inches Converter</a></li>
+<li><a href="/pounds-to-kilograms-converter">Pounds to Kilograms Converter</a></li>
+<li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const rateEl = document.getElementById('rate');
+const regEl = document.getElementById('regular');
+const otEl = document.getElementById('overtime');
+const multEl = document.getElementById('mult');
+const resultEl = document.getElementById('result');
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function money(n){ return n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+function calc(){
+  const rate = toNum(rateEl.value);
+  const reg = toNum(regEl.value);
+  const ot = toNum(otEl.value) ?? 0;
+  const mult = parseFloat(multEl.value);
+  if(rate === null || reg === null){ resultEl.innerHTML = "<strong>Weekly gross pay:</strong> —"; return; }
+  const gross = (reg * rate) + (ot * rate * mult);
+  resultEl.innerHTML = `<strong>Weekly gross pay:</strong> $${money(gross)}`;
+}
+[rateEl,regEl,otEl,multEl].forEach(el => el.addEventListener('input', calc));
+multEl.addEventListener('change', calc);
+  </script>
+</body>
+</html>

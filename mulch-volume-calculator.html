@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mulch Volume Calculator – Cubic Yards & Coverage</title>
+  <meta name="description" content="Calculate mulch volume by area and depth. Ideal for landscaping, yard work, and material planning." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How accurate is this mulch calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It provides an estimate using standard volume formulas. Actual needs may vary by settling and coverage."}}, {"@type": "Question", "name": "Should I add extra mulch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Consider adding 5–10% extra for waste and uneven ground."}}, {"@type": "Question", "name": "What depth should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Common mulch depth is 2–4 inches depending on the project."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Mulch Volume Calculator</h1>
+      <p>Estimate mulch volume based on area and depth. Output in cubic yards or cubic feet.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="area">Area (sq ft)</label>
+          <input id="area" inputmode="decimal" placeholder="e.g., 400" />
+        </div>
+        <div>
+          <label for="depth">Depth (inches)</label>
+          <input id="depth" inputmode="decimal" placeholder="e.g., 3" value="3" />
+        </div>
+        <div>
+          <label for="waste">Extra for waste</label>
+          <select id="waste">
+            <option value="0">0%</option>
+            <option value="0.05">5%</option>
+            <option value="0.10">10%</option>
+          </select>
+        </div>
+        <div>
+          <label for="unit">Result unit</label>
+          <select id="unit">
+            <option value="yd">Cubic yards</option>
+            <option value="ft">Cubic feet</option>
+          </select>
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Mulch needed:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Common Depth</h3>
+        <p>Mulch is often applied at <strong>2–4 inches</strong> depending on the project.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/cubic-yards-to-cubic-feet-converter">Cubic Yards to Cubic Feet Converter</a></li>
+<li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
+<li><a href="/fence-length-calculator">Fence Length Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const areaEl = document.getElementById('area');
+const depthEl = document.getElementById('depth');
+const wasteEl = document.getElementById('waste');
+const unitEl = document.getElementById('unit');
+const resultEl = document.getElementById('result');
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*100)/100).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function calc(){
+  const area = toNum(areaEl.value);
+  const depthIn = toNum(depthEl.value);
+  const waste = parseFloat(wasteEl.value);
+  const unit = unitEl.value;
+  if(area === null || depthIn === null || depthIn <= 0){ resultEl.innerHTML = "<strong>Mulch needed:</strong> —"; return; }
+
+  const cubicFeet = area * (depthIn/12) * (1 + waste);
+  const cubicYards = cubicFeet / 27;
+
+  if(unit === 'ft'){
+    resultEl.innerHTML = `<strong>Mulch needed:</strong> ${fmt(cubicFeet)} ft³`;
+  } else {
+    resultEl.innerHTML = `<strong>Mulch needed:</strong> ${fmt(cubicYards)} yd³`;
+  }
+}
+[areaEl,depthEl,wasteEl,unitEl].forEach(el => el.addEventListener('input', calc));
+wasteEl.addEventListener('change', calc);
+unitEl.addEventListener('change', calc);
+  </script>
+</body>
+</html>

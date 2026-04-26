@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pounds to Kilograms Converter – Fast Weight Conversion</title>
+  <meta name="description" content="Convert pounds to kilograms instantly. Accurate weight conversion for materials, shipping, and jobsite measurements." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many kilograms are in a pound?", "acceptedAnswer": {"@type": "Answer", "text": "One pound equals 0.45359237 kilograms."}}, {"@type": "Question", "name": "Is this weight converter accurate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It uses the standard international conversion factor."}}, {"@type": "Question", "name": "Can I convert kilograms back to pounds?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Enter kilograms to convert back to pounds instantly."}}]}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+      
+      <div class="nav">
+        <a href="/square-footage-calculator">Square Ft</a>
+        <a href="/concrete-bag-calculator">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Pounds to Kilograms Converter</h1>
+      <p>Convert pounds and kilograms instantly for materials, shipping, and jobsite measurements.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+        <div>
+          <label for="lb">Pounds (lb)</label>
+          <input id="lb" inputmode="decimal" placeholder="e.g., 150" />
+        </div>
+        <div>
+          <label for="kg">Kilograms (kg)</label>
+          <input id="kg" inputmode="decimal" placeholder="e.g., 68.0" />
+        </div>
+      </div>
+      <div class="result" id="result"><strong>Result:</strong> —</div>
+
+
+      <div class="section">
+        <h3>Common Reference</h3>
+        <p>1 lb = <strong>0.45359237 kg</strong>.</p>
+      </div>
+
+      <div class="section">
+        <h3>Related tools</h3>
+        <ul>
+          <li><a href="/gallons-to-liters-converter">Gallons to Liters Converter</a></li>
+<li><a href="/feet-to-inches-converter">Feet to Inches Converter</a></li>
+<li><a href="/hourly-to-weekly-pay-calculator">Hourly to Weekly Pay Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+const lbEl = document.getElementById('lb');
+const kgEl = document.getElementById('kg');
+const resultEl = document.getElementById('result');
+let lock = false;
+
+const LB_TO_KG = 0.45359237;
+
+function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
+function fmt(n){ return (Math.round(n*10000)/10000).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+
+function setResult(lb, kg){
+  if(lb === null && kg === null){ resultEl.innerHTML = "<strong>Result:</strong> —"; return; }
+  if(lb !== null){ resultEl.innerHTML = `<strong>Result:</strong> ${fmt(lb)} lb = ${fmt(lb*LB_TO_KG)} kg`; }
+  else { resultEl.innerHTML = `<strong>Result:</strong> ${fmt(kg)} kg = ${fmt(kg/LB_TO_KG)} lb`; }
+}
+
+lbEl.addEventListener('input', () => {
+  if(lock) return;
+  const lb = toNum(lbEl.value);
+  lock = true;
+  kgEl.value = lb === null ? "" : fmt(lb*LB_TO_KG);
+  lock = false;
+  setResult(lb, null);
+});
+
+kgEl.addEventListener('input', () => {
+  if(lock) return;
+  const kg = toNum(kgEl.value);
+  lock = true;
+  lbEl.value = kg === null ? "" : fmt(kg/LB_TO_KG);
+  lock = false;
+  setResult(null, kg);
+});
+  </script>
+</body>
+</html>
