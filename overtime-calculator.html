@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Overtime Calculator | QuickJobTools</title>
+  <meta name="description" content="Free overtime calculator. Estimate regular pay, overtime pay, and weekly gross pay." />
+  <link rel="canonical" href="https://quickjobtools.com/overtime-calculator.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this calculator include overtime?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enter overtime hours and choose an overtime multiplier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this gross pay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Results are gross pay before taxes, benefits, and deductions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a common overtime multiplier?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A common overtime multiplier is 1.5 times the regular hourly rate."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Overtime Calculator</h1>
+      <p>Calculate overtime pay from hourly rate, regular hours, overtime hours, and overtime multiplier.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="rate">Hourly Rate ($)</label>
+          <input id="rate" inputmode="decimal" placeholder="e.g., 25" />
+        </div>
+        <div>
+          <label for="regular">Regular Hours</label>
+          <input id="regular" inputmode="decimal" placeholder="e.g., 40" />
+        </div>
+        <div>
+          <label for="overtime">Overtime Hours</label>
+          <input id="overtime" inputmode="decimal" placeholder="e.g., 8" />
+        </div>
+        <div>
+          <label for="mult">Overtime Multiplier</label>
+          <select id="mult">
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+            <option value="1">No overtime premium</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Total Gross Pay:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Calculate Overtime Pay</h2>
+        <p>Multiply overtime hours by your hourly rate and overtime multiplier.</p>
+        <p><strong>Formula:</strong> overtime hours × hourly rate × multiplier = overtime pay</p>
+      </div>
+
+      <div class="section">
+        <h2>Important Note</h2>
+        <p>This calculator shows gross pay before taxes and deductions. Overtime rules may vary by job, employer, and location.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/hourly-to-weekly-pay-calculator.html">Hourly to Weekly Pay Calculator</a></li>
+          <li><a href="/overtime-calculator.html">Overtime Calculator</a></li>
+          <li><a href="/time-and-a-half-calculator.html">Time and a Half Calculator</a></li>
+          <li><a href="/weekly-to-annual-pay-calculator.html">Weekly to Annual Pay Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Overtime Calculator FAQ</h2>
+
+        <h3>Does this calculator include overtime?</h3>
+        <p>Yes. Enter overtime hours and choose an overtime multiplier.</p>
+
+        <h3>Is this gross pay?</h3>
+        <p>Yes. Results are gross pay before taxes, benefits, and deductions.</p>
+
+        <h3>What is a common overtime multiplier?</h3>
+        <p>A common overtime multiplier is 1.5 times the regular hourly rate.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    const rateEl = document.getElementById('rate');
+    const regularEl = document.getElementById('regular');
+    const overtimeEl = document.getElementById('overtime');
+    const multEl = document.getElementById('mult');
+    const resultEl = document.getElementById('result');
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function money(n) {
+      return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calc() {
+      const rate = toNum(rateEl.value);
+      const regular = toNum(regularEl.value);
+      const overtime = toNum(overtimeEl.value) ?? 0;
+      const mult = parseFloat(multEl.value);
+
+      if (rate === null || regular === null) {
+        resultEl.innerHTML = "<strong>Total Gross Pay:</strong> —";
+        return;
+      }
+
+      const regularPay = rate * regular;
+      const overtimePay = rate * overtime * mult;
+      const total = regularPay + overtimePay;
+
+      resultEl.innerHTML = `<strong>Total Gross Pay:</strong> $${money(total)} (Overtime: $${money(overtimePay)})`;
+    }
+
+    [rateEl, regularEl, overtimeEl, multEl].forEach(el => {
+      el.addEventListener('input', calc);
+      el.addEventListener('change', calc);
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inches to Feet Converter | QuickJobTools</title>
+  <meta name="description" content="Free inches to feet converter. Convert inches to feet instantly for measurements, jobsite planning, and construction work." />
+  <link rel="canonical" href="https://quickjobtools.com/inches-to-feet-converter.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many feet are in 12 inches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is 1 foot in 12 inches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert inches to feet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide inches by 12 to convert to feet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert feet back to inches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enter feet and the calculator converts back to inches."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Inches to Feet Converter</h1>
+      <p>Convert inches to feet or feet to inches instantly for measurements and jobsite planning.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="a">Inches (in)</label>
+          <input id="a" inputmode="decimal" placeholder="e.g., 72" />
+        </div>
+        <div>
+          <label for="b">Feet (ft)</label>
+          <input id="b" inputmode="decimal" placeholder="e.g., 6" />
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Result:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Convert in to ft</h2>
+        <p>To convert inches to feet, divide inches by 12.</p>
+      </div>
+
+      <div class="section">
+        <h2>Helpful Tip</h2>
+        <p>Enter a value in either box and the converter will calculate the other unit automatically.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+          <li><a href="/pounds-to-kilograms-converter.html">Pounds to Kilograms Converter</a></li>
+          <li><a href="/gallons-to-liters-converter.html">Gallons to Liters Converter</a></li>
+          <li><a href="/miles-to-km-converter.html">Miles to Kilometers Converter</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Inches to Feet Converter FAQ</h2>
+
+        <h3>How many feet are in 12 inches?</h3>
+        <p>There is 1 foot in 12 inches.</p>
+
+        <h3>How do I convert inches to feet?</h3>
+        <p>Divide inches by 12 to convert to feet.</p>
+
+        <h3>Can I convert feet back to inches?</h3>
+        <p>Yes. Enter feet and the calculator converts back to inches.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function fmt(n) {
+      return (Math.round(n * 100) / 100)
+        .toString()
+        .replace(/\.0+$/, '')
+        .replace(/(\.\d*?)0+$/, '$1');
+    }
+
+    const aEl = document.getElementById('a');
+    const bEl = document.getElementById('b');
+    const resultEl = document.getElementById('result');
+    let lock = false;
+    const FACTOR = 0.08333333333333333;
+
+    function setResult(a, b) {
+      if (a === null && b === null) {
+        resultEl.innerHTML = "<strong>Result:</strong> —";
+        return;
+      }
+
+      if (a !== null) {
+        resultEl.innerHTML = `<strong>Result:</strong> ${fmt(a)} in = ${fmt(a * FACTOR)} ft`;
+      } else {
+        resultEl.innerHTML = `<strong>Result:</strong> ${fmt(b)} ft = ${fmt(b / FACTOR)} in`;
+      }
+    }
+
+    aEl.addEventListener('input', () => {
+      if (lock) return;
+      const a = toNum(aEl.value);
+      lock = true;
+      bEl.value = a === null ? "" : fmt(a * FACTOR);
+      lock = false;
+      setResult(a, null);
+    });
+
+    bEl.addEventListener('input', () => {
+      if (lock) return;
+      const b = toNum(bEl.value);
+      lock = true;
+      aEl.value = b === null ? "" : fmt(b / FACTOR);
+      lock = false;
+      setResult(null, b);
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roof Pitch Calculator | QuickJobTools</title>
+  <meta name="description" content="Free roof pitch calculator. Calculate roof pitch ratio and roof angle from rise and run." />
+  <link rel="canonical" href="https://quickjobtools.com/roof-pitch-calculator.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is roof pitch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Roof pitch is the rise of the roof compared to its horizontal run, commonly shown as inches of rise per 12 inches of run."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate roof pitch angle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide rise by run, then use arctangent to calculate the angle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does 6/12 pitch mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 6/12 pitch means the roof rises 6 inches for every 12 inches of horizontal run."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Roof Pitch Calculator</h1>
+      <p>Calculate roof pitch and roof angle from rise and run measurements.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="rise">Rise (inches)</label>
+          <input id="rise" inputmode="decimal" placeholder="e.g., 6" />
+        </div>
+        <div>
+          <label for="run">Run (inches)</label>
+          <input id="run" inputmode="decimal" placeholder="e.g., 12" value="12" />
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Roof Pitch:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Calculate Roof Pitch</h2>
+        <p>Roof pitch is commonly shown as rise over 12 inches of run. A 6-inch rise over 12 inches of run is a 6/12 pitch.</p>
+        <p><strong>Formula:</strong> pitch = rise ÷ run</p>
+      </div>
+
+      <div class="section">
+        <h2>Common Roof Pitch Examples</h2>
+        <table class="table">
+          <tbody>
+            <tr><td>4/12</td><td>About 18.43°</td></tr>
+            <tr><td>6/12</td><td>About 26.57°</td></tr>
+            <tr><td>8/12</td><td>About 33.69°</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/square-footage-calculator.html">Square Footage Calculator</a></li>
+          <li><a href="/concrete-bag-calculator.html">Concrete Bag Calculator</a></li>
+          <li><a href="/cubic-yards-to-cubic-feet-converter.html">Cubic Yards to Cubic Feet Converter</a></li>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Roof Pitch Calculator FAQ</h2>
+
+        <h3>What is roof pitch?</h3>
+        <p>Roof pitch is the rise of the roof compared to its horizontal run, commonly shown as inches of rise per 12 inches of run.</p>
+
+        <h3>How do I calculate roof pitch angle?</h3>
+        <p>Divide rise by run, then use arctangent to calculate the angle.</p>
+
+        <h3>What does 6/12 pitch mean?</h3>
+        <p>A 6/12 pitch means the roof rises 6 inches for every 12 inches of horizontal run.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function fmt(n) {
+      return (Math.round(n * 100) / 100)
+        .toString()
+        .replace(/\.0+$/, '')
+        .replace(/(\.\d*?)0+$/, '$1');
+    }
+
+    const riseEl = document.getElementById('rise');
+    const runEl = document.getElementById('run');
+    const resultEl = document.getElementById('result');
+
+    function calc() {
+      const rise = toNum(riseEl.value);
+      const run = toNum(runEl.value);
+
+      if (rise === null || run === null || run <= 0) {
+        resultEl.innerHTML = "<strong>Roof Pitch:</strong> —";
+        return;
+      }
+
+      const pitchPer12 = rise / run * 12;
+      const angle = Math.atan(rise / run) * (180 / Math.PI);
+
+      resultEl.innerHTML = `<strong>Roof Pitch:</strong> ${fmt(pitchPer12)}/12 (Angle ≈ ${fmt(angle)}°)`;
+    }
+
+    [riseEl, runEl].forEach(el => el.addEventListener('input', calc));
+
+  </script>
+</body>
+</html>

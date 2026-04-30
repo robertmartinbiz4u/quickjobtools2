@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gravel Calculator | QuickJobTools</title>
+  <meta name="description" content="Free gravel calculator. Estimate cubic yards and cubic feet of gravel needed based on area, depth, and extra waste." />
+  <link rel="canonical" href="https://quickjobtools.com/gravel-calculator.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate gravel needed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply area in square feet by depth in feet to get cubic feet. Divide by 27 to get cubic yards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What gravel depth should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common depths range from 2 to 4 inches for landscaping and can be deeper for driveways or base layers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I add extra gravel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Adding 5 to 10 percent extra is useful for compaction, waste, and uneven areas."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Gravel Calculator</h1>
+      <p>Estimate how much gravel you need for driveways, paths, landscaping, pads, and ground cover.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="area">Area (sq ft)</label>
+          <input id="area" inputmode="decimal" placeholder="e.g., 500" />
+        </div>
+        <div>
+          <label for="depth">Depth (inches)</label>
+          <input id="depth" inputmode="decimal" placeholder="e.g., 3" value="3" />
+        </div>
+        <div>
+          <label for="waste">Extra for Waste</label>
+          <select id="waste">
+            <option value="0">0%</option>
+            <option value="0.05">5%</option>
+            <option value="0.10">10%</option>
+          </select>
+        </div>
+        <div>
+          <label for="unit">Result Unit</label>
+          <select id="unit">
+            <option value="yd">Cubic yards</option>
+            <option value="ft">Cubic feet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Gravel Needed:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Calculate Gravel</h2>
+        <p>Multiply area by depth to estimate volume. Convert depth from inches to feet by dividing by 12.</p>
+        <p><strong>Formula:</strong> area × depth in feet = cubic feet</p>
+        <p>Divide cubic feet by 27 to convert to cubic yards.</p>
+      </div>
+
+      <div class="section">
+        <h2>Helpful Tip</h2>
+        <p>Add 5% to 10% extra gravel for compaction, uneven ground, spreading differences, and waste.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/square-footage-calculator.html">Square Footage Calculator</a></li>
+          <li><a href="/concrete-bag-calculator.html">Concrete Bag Calculator</a></li>
+          <li><a href="/cubic-yards-to-cubic-feet-converter.html">Cubic Yards to Cubic Feet Converter</a></li>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Gravel Calculator FAQ</h2>
+
+        <h3>How do I calculate gravel needed?</h3>
+        <p>Multiply area in square feet by depth in feet to get cubic feet. Divide by 27 to get cubic yards.</p>
+
+        <h3>What gravel depth should I use?</h3>
+        <p>Common depths range from 2 to 4 inches for landscaping and can be deeper for driveways or base layers.</p>
+
+        <h3>Should I add extra gravel?</h3>
+        <p>Yes. Adding 5 to 10 percent extra is useful for compaction, waste, and uneven areas.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function fmt(n) {
+      return (Math.round(n * 100) / 100)
+        .toString()
+        .replace(/\.0+$/, '')
+        .replace(/(\.\d*?)0+$/, '$1');
+    }
+
+    const areaEl = document.getElementById('area');
+    const depthEl = document.getElementById('depth');
+    const wasteEl = document.getElementById('waste');
+    const unitEl = document.getElementById('unit');
+    const resultEl = document.getElementById('result');
+
+    function calc() {
+      const area = toNum(areaEl.value);
+      const depth = toNum(depthEl.value);
+      const waste = parseFloat(wasteEl.value);
+      const unit = unitEl.value;
+
+      if (area === null || depth === null || depth <= 0) {
+        resultEl.innerHTML = "<strong>Gravel Needed:</strong> —";
+        return;
+      }
+
+      const cubicFeet = area * (depth / 12) * (1 + waste);
+      const cubicYards = cubicFeet / 27;
+
+      resultEl.innerHTML = unit === 'ft'
+        ? `<strong>Gravel Needed:</strong> ${fmt(cubicFeet)} ft³`
+        : `<strong>Gravel Needed:</strong> ${fmt(cubicYards)} yd³`;
+    }
+
+    [areaEl, depthEl, wasteEl, unitEl].forEach(el => {
+      el.addEventListener('input', calc);
+      el.addEventListener('change', calc);
+    });
+
+  </script>
+</body>
+</html>

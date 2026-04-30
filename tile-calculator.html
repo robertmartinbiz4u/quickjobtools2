@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tile Calculator | QuickJobTools</title>
+  <meta name="description" content="Free tile calculator. Estimate how many tiles you need based on area, tile size, and extra waste." />
+  <link rel="canonical" href="https://quickjobtools.com/tile-calculator.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate how many tiles I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the total area by the square footage of one tile, add waste, and round up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much extra tile should I buy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many projects add 10 to 15 percent extra for cuts, waste, breakage, and repairs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for floors and walls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This calculator can be used for floor tile, wall tile, backsplashes, and similar areas."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Tile Calculator</h1>
+      <p>Estimate tile quantity for floors, walls, backsplashes, bathrooms, kitchens, and jobsite planning.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="area">Area (sq ft)</label>
+          <input id="area" inputmode="decimal" placeholder="e.g., 120" />
+        </div>
+        <div>
+          <label for="tileArea">Tile Area (sq ft)</label>
+          <input id="tileArea" inputmode="decimal" placeholder="e.g., 1" value="1" />
+        </div>
+        <div>
+          <label for="waste">Extra for Waste</label>
+          <select id="waste">
+            <option value="0">0%</option>
+            <option value="0.10">10%</option>
+            <option value="0.15">15%</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Tiles Needed:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Calculate Tile Quantity</h2>
+        <p>Divide the project area by the area of one tile, then add waste and round up.</p>
+        <p><strong>Formula:</strong> area ÷ tile area = tiles needed</p>
+      </div>
+
+      <div class="section">
+        <h2>Helpful Tip</h2>
+        <p>Add 10% to 15% extra tile for cuts, breakage, pattern matching, and future repairs.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/square-footage-calculator.html">Square Footage Calculator</a></li>
+          <li><a href="/concrete-bag-calculator.html">Concrete Bag Calculator</a></li>
+          <li><a href="/cubic-yards-to-cubic-feet-converter.html">Cubic Yards to Cubic Feet Converter</a></li>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Tile Calculator FAQ</h2>
+
+        <h3>How do I calculate how many tiles I need?</h3>
+        <p>Divide the total area by the square footage of one tile, add waste, and round up.</p>
+
+        <h3>How much extra tile should I buy?</h3>
+        <p>Many projects add 10 to 15 percent extra for cuts, waste, breakage, and repairs.</p>
+
+        <h3>Can I use this for floors and walls?</h3>
+        <p>Yes. This calculator can be used for floor tile, wall tile, backsplashes, and similar areas.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function fmt(n) {
+      return (Math.round(n * 100) / 100)
+        .toString()
+        .replace(/\.0+$/, '')
+        .replace(/(\.\d*?)0+$/, '$1');
+    }
+
+    const areaEl = document.getElementById('area');
+    const tileAreaEl = document.getElementById('tileArea');
+    const wasteEl = document.getElementById('waste');
+    const resultEl = document.getElementById('result');
+
+    function calc() {
+      const area = toNum(areaEl.value);
+      const tileArea = toNum(tileAreaEl.value);
+      const waste = parseFloat(wasteEl.value);
+
+      if (area === null || tileArea === null || area <= 0 || tileArea <= 0) {
+        resultEl.innerHTML = "<strong>Tiles Needed:</strong> —";
+        return;
+      }
+
+      const tiles = Math.ceil((area * (1 + waste)) / tileArea);
+      resultEl.innerHTML = `<strong>Tiles Needed:</strong> ${tiles}`;
+    }
+
+    [areaEl, tileAreaEl, wasteEl].forEach(el => {
+      el.addEventListener('input', calc);
+      el.addEventListener('change', calc);
+    });
+
+  </script>
+</body>
+</html>

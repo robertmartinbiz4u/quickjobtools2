@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PSI to Bar Converter | QuickJobTools</title>
+  <meta name="description" content="Free PSI to bar converter. Convert pressure from psi to bar instantly for tools, tires, equipment, and jobsite use." />
+  <link rel="canonical" href="https://quickjobtools.com/psi-to-bar-converter.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many bar are in 1 PSI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1 PSI equals approximately 0.0689476 bar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert PSI to bar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply PSI by 0.0689476."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert bar back to PSI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enter bar and the calculator converts back to PSI."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>PSI to Bar Converter</h1>
+      <p>Convert PSI to bar or bar to PSI instantly for pressure measurements.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="a">PSI</label>
+          <input id="a" inputmode="decimal" placeholder="e.g., 100" />
+        </div>
+        <div>
+          <label for="b">Bar</label>
+          <input id="b" inputmode="decimal" placeholder="e.g., 6.89" />
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Result:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Convert psi to bar</h2>
+        <p>To convert PSI to bar, multiply PSI by 0.0689476.</p>
+      </div>
+
+      <div class="section">
+        <h2>Helpful Tip</h2>
+        <p>Enter a value in either box and the converter will calculate the other unit automatically.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+          <li><a href="/pounds-to-kilograms-converter.html">Pounds to Kilograms Converter</a></li>
+          <li><a href="/gallons-to-liters-converter.html">Gallons to Liters Converter</a></li>
+          <li><a href="/miles-to-km-converter.html">Miles to Kilometers Converter</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>PSI to Bar Converter FAQ</h2>
+
+        <h3>How many bar are in 1 PSI?</h3>
+        <p>1 PSI equals approximately 0.0689476 bar.</p>
+
+        <h3>How do I convert PSI to bar?</h3>
+        <p>Multiply PSI by 0.0689476.</p>
+
+        <h3>Can I convert bar back to PSI?</h3>
+        <p>Yes. Enter bar and the calculator converts back to PSI.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function fmt(n) {
+      return (Math.round(n * 100) / 100)
+        .toString()
+        .replace(/\.0+$/, '')
+        .replace(/(\.\d*?)0+$/, '$1');
+    }
+
+    const aEl = document.getElementById('a');
+    const bEl = document.getElementById('b');
+    const resultEl = document.getElementById('result');
+    let lock = false;
+    const FACTOR = 0.0689476;
+
+    function setResult(a, b) {
+      if (a === null && b === null) {
+        resultEl.innerHTML = "<strong>Result:</strong> —";
+        return;
+      }
+
+      if (a !== null) {
+        resultEl.innerHTML = `<strong>Result:</strong> ${fmt(a)} psi = ${fmt(a * FACTOR)} bar`;
+      } else {
+        resultEl.innerHTML = `<strong>Result:</strong> ${fmt(b)} bar = ${fmt(b / FACTOR)} psi`;
+      }
+    }
+
+    aEl.addEventListener('input', () => {
+      if (lock) return;
+      const a = toNum(aEl.value);
+      lock = true;
+      bEl.value = a === null ? "" : fmt(a * FACTOR);
+      lock = false;
+      setResult(a, null);
+    });
+
+    bEl.addEventListener('input', () => {
+      if (lock) return;
+      const b = toNum(bEl.value);
+      lock = true;
+      aEl.value = b === null ? "" : fmt(b / FACTOR);
+      lock = false;
+      setResult(null, b);
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Time and a Half Calculator | QuickJobTools</title>
+  <meta name="description" content="Free time and a half calculator. Calculate overtime rate and overtime pay from your hourly wage." />
+  <link rel="canonical" href="https://quickjobtools.com/time-and-a-half-calculator.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is time and a half?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Time and a half is 1.5 times your regular hourly rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate time and a half?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply your hourly rate by 1.5."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this include taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator shows gross overtime pay before taxes or deductions."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Time and a Half Calculator</h1>
+      <p>Calculate your time-and-a-half overtime rate and overtime pay from your hourly wage.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="rate">Hourly Rate ($)</label>
+          <input id="rate" inputmode="decimal" placeholder="e.g., 24" />
+        </div>
+        <div>
+          <label for="hours">Overtime Hours</label>
+          <input id="hours" inputmode="decimal" placeholder="e.g., 6" />
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Time and a Half Pay:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Calculate Time and a Half</h2>
+        <p>Time and a half means 1.5 times your regular hourly rate.</p>
+        <p><strong>Formula:</strong> hourly rate × 1.5 = overtime rate</p>
+      </div>
+
+      <div class="section">
+        <h2>Example</h2>
+        <p>If your hourly rate is $20, your time-and-a-half rate is $30 per hour.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/hourly-to-weekly-pay-calculator.html">Hourly to Weekly Pay Calculator</a></li>
+          <li><a href="/overtime-calculator.html">Overtime Calculator</a></li>
+          <li><a href="/time-and-a-half-calculator.html">Time and a Half Calculator</a></li>
+          <li><a href="/weekly-to-annual-pay-calculator.html">Weekly to Annual Pay Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Time and a Half Calculator FAQ</h2>
+
+        <h3>What is time and a half?</h3>
+        <p>Time and a half is 1.5 times your regular hourly rate.</p>
+
+        <h3>How do I calculate time and a half?</h3>
+        <p>Multiply your hourly rate by 1.5.</p>
+
+        <h3>Does this include taxes?</h3>
+        <p>No. This calculator shows gross overtime pay before taxes or deductions.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    const rateEl = document.getElementById('rate');
+    const hoursEl = document.getElementById('hours');
+    const resultEl = document.getElementById('result');
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function money(n) {
+      return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calc() {
+      const rate = toNum(rateEl.value);
+      const hours = toNum(hoursEl.value) ?? 0;
+
+      if (rate === null) {
+        resultEl.innerHTML = "<strong>Time and a Half Pay:</strong> —";
+        return;
+      }
+
+      const otRate = rate * 1.5;
+      const otPay = otRate * hours;
+
+      resultEl.innerHTML = `<strong>Time and a Half Pay:</strong> $${money(otPay)} (Rate: $${money(otRate)}/hr)`;
+    }
+
+    [rateEl, hoursEl].forEach(el => el.addEventListener('input', calc));
+
+  </script>
+</body>
+</html>

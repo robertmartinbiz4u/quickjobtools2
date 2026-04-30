@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Concrete Volume Calculator | QuickJobTools</title>
+  <meta name="description" content="Free concrete volume calculator. Estimate cubic feet and cubic yards of concrete needed for slabs, pads, and footings." />
+  <link rel="canonical" href="https://quickjobtools.com/concrete-volume-calculator.html" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate concrete volume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply length by width by thickness in feet to get cubic feet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many cubic feet are in a cubic yard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are 27 cubic feet in one cubic yard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for slabs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This calculator works for rectangular slabs, pads, and similar pours."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
+
+      <div class="nav">
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Concrete Volume Calculator</h1>
+      <p>Calculate concrete volume from length, width, and thickness for slabs, pads, and rectangular pours.</p>
+    </div>
+
+    <div class="card tool">
+      <div class="tool-grid">
+
+        <div>
+          <label for="length">Length (feet)</label>
+          <input id="length" inputmode="decimal" placeholder="e.g., 12" />
+        </div>
+        <div>
+          <label for="width">Width (feet)</label>
+          <input id="width" inputmode="decimal" placeholder="e.g., 10" />
+        </div>
+        <div>
+          <label for="thickness">Thickness (inches)</label>
+          <input id="thickness" inputmode="decimal" placeholder="e.g., 4" />
+        </div>
+        <div>
+          <label for="unit">Result Unit</label>
+          <select id="unit">
+            <option value="yd">Cubic yards</option>
+            <option value="ft">Cubic feet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result" id="result"><strong>Concrete Volume:</strong> —</div>
+
+
+      <div class="section">
+        <h2>How to Calculate Concrete Volume</h2>
+        <p>Multiply length by width by thickness. Convert thickness from inches to feet by dividing by 12.</p>
+        <p><strong>Formula:</strong> length × width × thickness in feet = cubic feet</p>
+      </div>
+
+      <div class="section">
+        <h2>Helpful Tip</h2>
+        <p>For bag estimates, use the concrete bag calculator. For ready-mix orders, cubic yards are commonly used.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
+        <ul>
+          <li><a href="/square-footage-calculator.html">Square Footage Calculator</a></li>
+          <li><a href="/concrete-bag-calculator.html">Concrete Bag Calculator</a></li>
+          <li><a href="/cubic-yards-to-cubic-feet-converter.html">Cubic Yards to Cubic Feet Converter</a></li>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Concrete Volume Calculator FAQ</h2>
+
+        <h3>How do I calculate concrete volume?</h3>
+        <p>Multiply length by width by thickness in feet to get cubic feet.</p>
+
+        <h3>How many cubic feet are in a cubic yard?</h3>
+        <p>There are 27 cubic feet in one cubic yard.</p>
+
+        <h3>Can I use this for slabs?</h3>
+        <p>Yes. This calculator works for rectangular slabs, pads, and similar pours.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="margin-top:8px;">
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function fmt(n) {
+      return (Math.round(n * 100) / 100)
+        .toString()
+        .replace(/\.0+$/, '')
+        .replace(/(\.\d*?)0+$/, '$1');
+    }
+
+    const lengthEl = document.getElementById('length');
+    const widthEl = document.getElementById('width');
+    const thicknessEl = document.getElementById('thickness');
+    const unitEl = document.getElementById('unit');
+    const resultEl = document.getElementById('result');
+
+    function calc() {
+      const L = toNum(lengthEl.value);
+      const W = toNum(widthEl.value);
+      const T = toNum(thicknessEl.value);
+      const unit = unitEl.value;
+
+      if (L === null || W === null || T === null || T <= 0) {
+        resultEl.innerHTML = "<strong>Concrete Volume:</strong> —";
+        return;
+      }
+
+      const cubicFeet = L * W * (T / 12);
+      const cubicYards = cubicFeet / 27;
+
+      resultEl.innerHTML = unit === 'ft'
+        ? `<strong>Concrete Volume:</strong> ${fmt(cubicFeet)} ft³`
+        : `<strong>Concrete Volume:</strong> ${fmt(cubicYards)} yd³`;
+    }
+
+    [lengthEl, widthEl, thicknessEl, unitEl].forEach(el => {
+      el.addEventListener('input', calc);
+      el.addEventListener('change', calc);
+    });
+
+  </script>
+</body>
+</html>
