@@ -1,17 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://quickjobtools.com/</loc></url>
-  <url><loc>https://quickjobtools.com/feet-to-inches-converter</loc></url>
-  <url><loc>https://quickjobtools.com/square-footage-calculator</loc></url>
-  <url><loc>https://quickjobtools.com/concrete-bag-calculator</loc></url>
-  <url><loc>https://quickjobtools.com/hourly-to-weekly-pay-calculator</loc></url>
-  <url><loc>https://quickjobtools.com/cubic-yards-to-cubic-feet-converter</loc></url>
-  <url><loc>https://quickjobtools.com/paint-coverage-calculator</loc></url>
-  <url><loc>https://quickjobtools.com/mulch-volume-calculator</loc></url>
-  <url><loc>https://quickjobtools.com/fence-length-calculator</loc></url>
-  <url><loc>https://quickjobtools.com/pounds-to-kilograms-converter</loc></url>
-  <url><loc>https://quickjobtools.com/gallons-to-liters-converter</loc></url>
-  <url><loc>https://quickjobtools.com/about</loc></url>
-  <url><loc>https://quickjobtools.com/privacy-policy</loc></url>
-  <url><loc>https://quickjobtools.com/terms-of-use</loc></url>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://quickjobtools.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/privacy-policy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/terms-of-use.html</loc>
+  </url>
+
+  <!-- Existing Tools -->
+
+  <url>
+    <loc>https://quickjobtools.com/feet-to-inches-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/square-footage-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/concrete-bag-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/cubic-yards-to-cubic-feet-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/hourly-to-weekly-pay-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/mulch-volume-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/paint-coverage-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/fence-length-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/pounds-to-kilograms-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/gallons-to-liters-converter.html</loc>
+  </url>
+
+  <!-- New Construction Tools -->
+
+  <url>
+    <loc>https://quickjobtools.com/gravel-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/concrete-volume-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/drywall-sheet-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/tile-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/roof-pitch-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/stair-rise-calculator.html</loc>
+  </url>
+
+  <!-- Work / Pay -->
+
+  <url>
+    <loc>https://quickjobtools.com/overtime-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/time-and-a-half-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/weekly-to-annual-pay-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/1099-hourly-rate-calculator.html</loc>
+  </url>
+
+  <!-- Converters -->
+
+  <url>
+    <loc>https://quickjobtools.com/inches-to-feet-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/celsius-to-fahrenheit-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/psi-to-bar-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://quickjobtools.com/miles-to-km-converter.html</loc>
+  </url>
+
 </urlset>
