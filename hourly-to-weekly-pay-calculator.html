@@ -3,46 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hourly to Weekly Pay Calculator – Including Overtime</title>
-  <meta name="description" content="Convert hourly pay to weekly earnings and overtime. Useful for laborers, contractors, and shift workers." />
+  <title>Hourly to Weekly Pay Calculator | QuickJobTools</title>
+  <meta name="description" content="Free hourly to weekly pay calculator. Estimate weekly gross pay from hourly rate, regular hours, overtime hours, and overtime multiplier." />
+  <link rel="canonical" href="https://quickjobtools.com/hourly-to-weekly-pay-calculator.html" />
   <link rel="stylesheet" href="/assets/style.css" />
+
   <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this calculator include overtime?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Add overtime hours and select an overtime multiplier."}}, {"@type": "Question", "name": "Does this include taxes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Results show gross pay before taxes or deductions."}}, {"@type": "Question", "name": "Can contractors use this?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It’s useful for both hourly employees and contractors."}}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate weekly pay from hourly pay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiply your hourly rate by your regular hours, then add any overtime pay."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator include overtime?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Enter overtime hours and choose an overtime multiplier such as 1.5x or 2x."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this include taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This calculator shows gross weekly pay before taxes, benefits, or deductions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can contractors use this calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. It can be used by hourly employees, contractors, freelancers, laborers, and shift workers."
+        }
+      }
+    ]
+  }
   </script>
 </head>
+
 <body>
   <div class="container">
     <div class="header">
       <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
-      
+
       <div class="nav">
-        <a href="/square-footage-calculator">Square Ft</a>
-        <a href="/concrete-bag-calculator">Concrete</a>
-        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
       </div>
     </div>
 
     <div class="hero">
       <h1>Hourly to Weekly Pay Calculator</h1>
-      <p>Estimate weekly gross pay from hourly rate, regular hours, and overtime hours.</p>
+      <p>Estimate weekly gross pay from hourly rate, regular hours, overtime hours, and overtime multiplier.</p>
     </div>
 
     <div class="card tool">
       <div class="tool-grid">
         <div>
-          <label for="rate">Hourly rate ($)</label>
+          <label for="rate">Hourly Rate ($)</label>
           <input id="rate" inputmode="decimal" placeholder="e.g., 22.50" />
         </div>
+
         <div>
-          <label for="regular">Regular hours</label>
+          <label for="regular">Regular Hours</label>
           <input id="regular" inputmode="decimal" placeholder="e.g., 40" />
         </div>
+
         <div>
-          <label for="overtime">Overtime hours</label>
+          <label for="overtime">Overtime Hours</label>
           <input id="overtime" inputmode="decimal" placeholder="e.g., 6" />
         </div>
+
         <div>
-          <label for="mult">Overtime multiplier</label>
+          <label for="mult">Overtime Multiplier</label>
           <select id="mult">
             <option value="1.5">1.5×</option>
             <option value="2">2×</option>
@@ -50,52 +93,121 @@
           </select>
         </div>
       </div>
-      <div class="result" id="result"><strong>Weekly gross pay:</strong> —</div>
 
+      <div class="result" id="result"><strong>Weekly Gross Pay:</strong> —</div>
 
       <div class="section">
-        <h3>Note</h3>
-        <p>This shows gross pay before taxes or deductions. Overtime rules vary by employer and location.</p>
+        <h2>How to Calculate Weekly Pay</h2>
+        <p>To calculate weekly gross pay, multiply your hourly rate by regular hours worked, then add overtime pay if applicable.</p>
+        <p><strong>Formula:</strong> regular pay + overtime pay = weekly gross pay</p>
+        <p>Example: $25/hour × 40 regular hours = $1,000. If you also work 5 overtime hours at 1.5×, overtime pay is $187.50, for total weekly gross pay of $1,187.50.</p>
       </div>
 
       <div class="section">
-        <h3>Related tools</h3>
+        <h2>Example Weekly Pay Estimates</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Hourly Rate</th>
+              <th>Hours</th>
+              <th>Weekly Gross Pay</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>$20/hr</td><td>40</td><td>$800.00</td></tr>
+            <tr><td>$25/hr</td><td>40</td><td>$1,000.00</td></tr>
+            <tr><td>$30/hr</td><td>40</td><td>$1,200.00</td></tr>
+            <tr><td>$35/hr</td><td>40</td><td>$1,400.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>Important Note</h2>
+        <p>This calculator shows gross pay before taxes, benefits, retirement contributions, insurance, or other deductions. Overtime rules can vary by employer, role, and location.</p>
+      </div>
+
+      <div class="section">
+        <h2>When This Calculator Is Useful</h2>
+        <p>Use this hourly to weekly pay calculator for shift work, construction jobs, part-time work, contract labor, freelance work, overtime estimates, and quick paycheck planning.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
         <ul>
-          <li><a href="/feet-to-inches-converter">Feet to Inches Converter</a></li>
-<li><a href="/pounds-to-kilograms-converter">Pounds to Kilograms Converter</a></li>
-<li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+          <li><a href="/pounds-to-kilograms-converter.html">Pounds to Kilograms Converter</a></li>
+          <li><a href="/square-footage-calculator.html">Square Footage Calculator</a></li>
+          <li><a href="/concrete-bag-calculator.html">Concrete Bag Calculator</a></li>
         </ul>
+      </div>
+
+      <div class="section">
+        <h2>Hourly to Weekly Pay FAQ</h2>
+
+        <h3>How do I calculate weekly pay from hourly pay?</h3>
+        <p>Multiply your hourly rate by regular hours worked, then add overtime pay if you worked overtime.</p>
+
+        <h3>Does this calculator include overtime?</h3>
+        <p>Yes. Enter your overtime hours and select the overtime multiplier.</p>
+
+        <h3>Is this gross pay or take-home pay?</h3>
+        <p>This is gross pay before taxes and deductions. It is not take-home pay.</p>
+
+        <h3>Can I use this for contract work?</h3>
+        <p>Yes. Contractors, freelancers, hourly workers, and shift workers can use this for quick pay estimates.</p>
       </div>
     </div>
 
     <div class="footer">
       <div style="margin-top:8px;">
-        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
       </div>
     </div>
   </div>
 
   <script>
-const rateEl = document.getElementById('rate');
-const regEl = document.getElementById('regular');
-const otEl = document.getElementById('overtime');
-const multEl = document.getElementById('mult');
-const resultEl = document.getElementById('result');
+    const rateEl = document.getElementById('rate');
+    const regEl = document.getElementById('regular');
+    const otEl = document.getElementById('overtime');
+    const multEl = document.getElementById('mult');
+    const resultEl = document.getElementById('result');
 
-function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
-function money(n){ return n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2}); }
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
 
-function calc(){
-  const rate = toNum(rateEl.value);
-  const reg = toNum(regEl.value);
-  const ot = toNum(otEl.value) ?? 0;
-  const mult = parseFloat(multEl.value);
-  if(rate === null || reg === null){ resultEl.innerHTML = "<strong>Weekly gross pay:</strong> —"; return; }
-  const gross = (reg * rate) + (ot * rate * mult);
-  resultEl.innerHTML = `<strong>Weekly gross pay:</strong> $${money(gross)}`;
-}
-[rateEl,regEl,otEl,multEl].forEach(el => el.addEventListener('input', calc));
-multEl.addEventListener('change', calc);
+    function money(n) {
+      return n.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function calc() {
+      const rate = toNum(rateEl.value);
+      const reg = toNum(regEl.value);
+      const ot = toNum(otEl.value) ?? 0;
+      const mult = parseFloat(multEl.value);
+
+      if (rate === null || reg === null) {
+        resultEl.innerHTML = "<strong>Weekly Gross Pay:</strong> —";
+        return;
+      }
+
+      const gross = (reg * rate) + (ot * rate * mult);
+      resultEl.innerHTML = `<strong>Weekly Gross Pay:</strong> $${money(gross)}`;
+    }
+
+    [rateEl, regEl, otEl, multEl].forEach(el => {
+      el.addEventListener('input', calc);
+    });
+
+    multEl.addEventListener('change', calc);
   </script>
 </body>
 </html>
