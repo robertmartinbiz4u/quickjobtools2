@@ -3,28 +3,68 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Concrete Bag Calculator – How Many Bags Do I Need?</title>
-  <meta name="description" content="Estimate how many concrete bags you need for slabs, posts, and footings. Accurate, fast, and built for jobsite planning." />
+  <title>Concrete Bag Calculator | QuickJobTools</title>
+  <meta name="description" content="Free concrete bag calculator. Estimate how many 50 lb, 60 lb, or 80 lb concrete bags you need for slabs, pads, posts, and footings." />
+  <link rel="canonical" href="https://quickjobtools.com/concrete-bag-calculator.html" />
   <link rel="stylesheet" href="/assets/style.css" />
+
   <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How accurate is this concrete bag calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It provides an estimate using standard bag yields. Actual results may vary by mix and conditions."}}, {"@type": "Question", "name": "Should I buy extra concrete bags?", "acceptedAnswer": {"@type": "Answer", "text": "It’s recommended to add 5–10% extra for waste or uneven forms."}}, {"@type": "Question", "name": "What thickness should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Use the planned slab thickness in inches (common slabs are 4 inches)."}}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate how many concrete bags I need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the slab length, width, thickness, and bag size. The calculator estimates the number of bags needed based on concrete volume."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I buy extra concrete bags?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. It is common to add 5 to 10 percent extra for waste, uneven forms, or spillage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What thickness should I use for a slab?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many residential slabs use 4 inches, but your project requirements may vary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this for footings or pads?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This calculator works for slabs, pads, and rectangular pours. Adjust measurements to match your project."
+        }
+      }
+    ]
+  }
   </script>
 </head>
+
 <body>
   <div class="container">
     <div class="header">
       <div class="brand"><a href="/">Quick<span>Job</span>Tools</a></div>
-      
+
       <div class="nav">
-        <a href="/square-footage-calculator">Square Ft</a>
-        <a href="/concrete-bag-calculator">Concrete</a>
-        <a href="/hourly-to-weekly-pay-calculator">Pay</a>
+        <a href="/square-footage-calculator.html">Square Ft</a>
+        <a href="/concrete-bag-calculator.html">Concrete</a>
+        <a href="/hourly-to-weekly-pay-calculator.html">Pay</a>
       </div>
     </div>
 
     <div class="hero">
       <h1>Concrete Bag Calculator</h1>
-      <p>Estimate concrete bags needed for a slab or pad. Enter length, width, and thickness. Choose your bag size.</p>
+      <p>Estimate how many bags of concrete you need for slabs, pads, and small pours. Enter dimensions and choose bag size.</p>
     </div>
 
     <div class="card tool">
@@ -33,71 +73,143 @@
           <label for="length">Length (feet)</label>
           <input id="length" inputmode="decimal" placeholder="e.g., 10" />
         </div>
+
         <div>
           <label for="width">Width (feet)</label>
           <input id="width" inputmode="decimal" placeholder="e.g., 10" />
         </div>
+
         <div>
           <label for="thickness">Thickness (inches)</label>
           <input id="thickness" inputmode="decimal" placeholder="e.g., 4" />
         </div>
+
         <div>
-          <label for="bag">Bag size</label>
+          <label for="bag">Bag Size</label>
           <select id="bag">
-            <option value="0.60">80 lb (≈0.60 cu ft)</option>
-            <option value="0.45">60 lb (≈0.45 cu ft)</option>
-            <option value="0.375">50 lb (≈0.375 cu ft)</option>
+            <option value="0.60">80 lb Bag (≈ 0.60 cu ft)</option>
+            <option value="0.45">60 lb Bag (≈ 0.45 cu ft)</option>
+            <option value="0.375">50 lb Bag (≈ 0.375 cu ft)</option>
           </select>
         </div>
       </div>
-      <div class="result" id="result"><strong>Bags needed:</strong> —</div>
 
+      <div class="result" id="result"><strong>Bags Needed:</strong> —</div>
 
       <div class="section">
-        <h3>Tip</h3>
-        <p>Consider adding 5–10% extra for waste, uneven forms, or spillage.</p>
+        <h2>How to Calculate Concrete Bags</h2>
+        <p>First calculate the total concrete volume in cubic feet:</p>
+        <p><strong>Formula:</strong> length × width × thickness (in feet)</p>
+        <p>Then divide by the yield of your chosen bag size.</p>
+        <p>Example: 10 ft × 10 ft × 4 in slab ≈ 33.33 cubic feet.</p>
       </div>
 
       <div class="section">
-        <h3>Related tools</h3>
+        <h2>Common Bag Yields</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Bag Size</th>
+              <th>Approx. Yield</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>50 lb</td><td>0.375 cu ft</td></tr>
+            <tr><td>60 lb</td><td>0.45 cu ft</td></tr>
+            <tr><td>80 lb</td><td>0.60 cu ft</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>Helpful Tip</h2>
+        <p>Buy 5% to 10% extra concrete for waste, spillage, form irregularities, and small miscalculations.</p>
+      </div>
+
+      <div class="section">
+        <h2>Where This Tool Helps</h2>
+        <p>Use this concrete bag calculator for sidewalks, shed pads, post bases, fence footings, small patios, slab repairs, and home improvement projects.</p>
+      </div>
+
+      <div class="section">
+        <h2>Related Tools</h2>
         <ul>
-          <li><a href="/square-footage-calculator">Square Footage Calculator</a></li>
-<li><a href="/cubic-yards-to-cubic-feet-converter">Cubic Yards to Cubic Feet Converter</a></li>
-<li><a href="/feet-to-inches-converter">Feet to Inches Converter</a></li>
+          <li><a href="/square-footage-calculator.html">Square Footage Calculator</a></li>
+          <li><a href="/cubic-yards-to-cubic-feet-converter.html">Cubic Yards to Cubic Feet Converter</a></li>
+          <li><a href="/feet-to-inches-converter.html">Feet to Inches Converter</a></li>
+          <li><a href="/paint-coverage-calculator.html">Paint Coverage Calculator</a></li>
         </ul>
+      </div>
+
+      <div class="section">
+        <h2>Concrete Bag Calculator FAQ</h2>
+
+        <h3>How many 80 lb bags do I need for a 10x10 slab?</h3>
+        <p>A 10x10 slab at 4 inches thick needs about 56 bags of 80 lb concrete, depending on exact yield and waste.</p>
+
+        <h3>What slab thickness is common?</h3>
+        <p>Many residential slabs are 4 inches thick, though some projects require thicker pours.</p>
+
+        <h3>Can I use this for footings?</h3>
+        <p>Yes. For square or rectangular footings, enter the dimensions and thickness.</p>
+
+        <h3>Should I round up?</h3>
+        <p>Yes. Always round up and buy extra to avoid running short mid-pour.</p>
       </div>
     </div>
 
     <div class="footer">
       <div style="margin-top:8px;">
-        <a href="/about">About</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | ©2026
+        <a href="/about.html">About</a> |
+        <a href="/terms-of-use.html">Terms of Use</a> |
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        ©2026
       </div>
     </div>
   </div>
 
   <script>
-const lengthEl = document.getElementById('length');
-const widthEl = document.getElementById('width');
-const thicknessEl = document.getElementById('thickness');
-const bagEl = document.getElementById('bag');
-const resultEl = document.getElementById('result');
+    const lengthEl = document.getElementById('length');
+    const widthEl = document.getElementById('width');
+    const thicknessEl = document.getElementById('thickness');
+    const bagEl = document.getElementById('bag');
+    const resultEl = document.getElementById('result');
 
-function toNum(v){ const n = parseFloat(String(v).replace(/,/g,'')); return Number.isFinite(n) ? n : null; }
-function fmt(n){ return (Math.round(n*100)/100).toString().replace(/\.0+$/,'').replace(/(\.\d*?)0+$/,'$1'); }
+    function toNum(v) {
+      const n = parseFloat(String(v).replace(/,/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
 
-function calc(){
-  const L = toNum(lengthEl.value);
-  const W = toNum(widthEl.value);
-  const T = toNum(thicknessEl.value);
-  const yieldPerBag = parseFloat(bagEl.value);
-  if(L === null || W === null || T === null){ resultEl.innerHTML = "<strong>Bags needed:</strong> —"; return; }
-  const volumeCuFt = L * W * (T/12);
-  const bags = Math.ceil(volumeCuFt / yieldPerBag);
-  resultEl.innerHTML = `<strong>Bags needed:</strong> ${bags} (volume ≈ ${fmt(volumeCuFt)} cu ft)`;
-}
+    function fmt(n) {
+      return (Math.round(n * 100) / 100)
+        .toString()
+        .replace(/\.0+$/, '')
+        .replace(/(\.\d*?)0+$/, '$1');
+    }
 
-[lengthEl,widthEl,thicknessEl,bagEl].forEach(el => el.addEventListener('input', calc));
-bagEl.addEventListener('change', calc);
+    function calc() {
+      const L = toNum(lengthEl.value);
+      const W = toNum(widthEl.value);
+      const T = toNum(thicknessEl.value);
+      const yieldPerBag = parseFloat(bagEl.value);
+
+      if (L === null || W === null || T === null) {
+        resultEl.innerHTML = "<strong>Bags Needed:</strong> —";
+        return;
+      }
+
+      const volumeCuFt = L * W * (T / 12);
+      const bags = Math.ceil(volumeCuFt / yieldPerBag);
+
+      resultEl.innerHTML =
+        `<strong>Bags Needed:</strong> ${bags} (Volume ≈ ${fmt(volumeCuFt)} cu ft)`;
+    }
+
+    [lengthEl, widthEl, thicknessEl, bagEl].forEach(el => {
+      el.addEventListener('input', calc);
+    });
+
+    bagEl.addEventListener('change', calc);
   </script>
 </body>
 </html>
